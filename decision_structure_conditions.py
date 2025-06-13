@@ -17,17 +17,34 @@ def main():
           print(f"{a} is equal to {b}.")
      # Create a decision strucutre to print a letter grade based on a test score.
      print("Grade Decision: 1")
-     test_score = 77
+     test_score = 137
 
      if ((test_score <= 100) and (test_score >= 90)):
           print(f"{test_score} --> A")
-     elif ((test_score <= 90) and (test_score >= 80)):
+     elif (test_score >= 80):
           print(f"{test_score} --> B")
-     elif ((test_score <= 80) and (test_score >= 70)):
+     elif (test_score >= 70):
           print(f"{test_score} --> C")
-     elif ((test_score <= 70) and (test_score >= 60)):
+     elif (test_score >= 60):
           print(f"{test_score} --> D")
+     elif ((test_score > 100) or (test_score >= 0)):
+          print(f"ERROR: {test_score} is an invalid score!")
      else:
           print(f"{test_score} --> F")
      
+     # Create a decision structure to determine the season: winter, summer, spring, autumn.
+     # Ask the user to enter the number of the month and based on the number, determine the season.
+     # Output the season: It is {season}.
+     user_month = int(input("Please input a month to find the season: " ))
+     if (((user_month == 12) or (user_month <= 2)) and (user_month <0)):
+          print("The curent season is Winter.")
+     elif (user_month <= 5):
+          print("The curent season is Spring.")
+     elif (user_month <= 8):
+          print("The curent season is Summer.")
+     elif (user_month <= 11):
+          print("The current season is Autumn.")
+     else:
+          print("Please input a valid month of the year.")
+
 main()
