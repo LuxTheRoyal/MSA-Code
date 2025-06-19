@@ -34,10 +34,22 @@ def display_cart(cart:dict, menu_items:dict) -> None:
      for item, quantity in cart.items():
           total += (quantity * menu_items[item])
           print(f"{quantity} {item} @{menu_items[item]:.2f}: {quantity * menu_items[item]:.2f}")
-     print(f"\nTotal: {total:.2f}")
-
+          print(f"\nTotal: {total:.2f}")
+     return
+"""
+Function to write items from the cart to a receipt
+Input: cart:dict
+Output: None
+"""
+def print_receipt(cart:dict, menu_items:dict)->None:
+     with open("receipt.txt", "w") as receipt_file:
+          total = 0
+          for item, quantity in cart.items():
+               total += (quantity * menu_items[item])
+               receipt_file.write(f"{quantity} {item} @{menu_items[item]:.2f}: {quantity * menu_items[item]:.2f}\n")
+          receipt_file.write(f"\nTotal: {total:.2f}")
 def main():
-     menu_item = get_menu_dictionary("file_demonstration.txt")
+     menu_items = get_menu_dictionary("file_demonstration.txt")
      item_cart = {}
      total = 0
      while True:
@@ -46,12 +58,13 @@ def main():
 
           #determine if we need to end the program
           if item.lower() == "end":
+               print_receipt(item_cart, menu_items)
                break
         
           #get the item price and add to total
           #Validate that item is in the menu item dict
           #use try except to catch an error if the item is not in the dictionary
-          if item not in menu_item:
+          if item not in menu_items:
             print(f"\nERROR: {item} is not an item on the menu!" )
             continue
           # Add item to cart. If it is in cart already than add quantity
@@ -66,7 +79,7 @@ def main():
           else:
               item_cart[item] += quantity
           #display total by calling the display cart function
-          display_cart(item_cart, menu_item)
+          display_cart(item_cart, menu_items)
           """
           2 Taco @$3: $6.00
           3 Bowl @$8.5: $25.50
