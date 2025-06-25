@@ -84,7 +84,6 @@ def get_student_dictionaries():
      student_list = load_students()
      # Get a list of student dictionaries
      student_dictionaries = student_to_dictionary(student_list)
-     print(student_dictionaries)
      return student_dictionaries
      
 
